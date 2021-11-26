@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sharonealex/RestaurantExpress/issues"
   },
-  "homepage": "https://github.com/sharonealex/RestaurantExpress#readme"
+  "homepage": "https://github.com/sharonealex/RestaurantExpress#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
