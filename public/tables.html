@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron mt-5 p-5 bg-warning">
+            <h1 class="text-center"><span class="fa fa-fire">Restraunt Express</span></h1>
+            <hr>
+            <h2 class="text-center">Current Reservations and Waiting List
+                <br>
+                <br>
+                <div class="text-center">
+                    <a href="./tables.html"><button class="btn btn-success"><span class="fa fa-home"></span></button></a>
+                    <a href="./reserve.html"><button class="btn btn-danger"><span class="fa fa-credit-card">  Make Reservation</span></button></a>
+                </div>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card mt-4">
+                    <div class="card-header bg-primary">Current Reservations</div>
+                    <div class="card-body">
+                    <ul id="table-list"  class="list-group"></ul>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-header bg-secondary">Waiting list</div>
+                    <div class="card-body">
+                        <ul id="waiting-list" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <p><a href="/api/tables">API TABLES LINK</a> | <a href="/api/waitlist">API WAIT LIST</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
