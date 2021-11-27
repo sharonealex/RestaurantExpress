@@ -43,8 +43,8 @@
                                 <input type="text" id="reserve-email" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="reserve-unique-id">Unique ID</label>
-                                <input type="text" class="form-control" id="reserve-unique-id"/>
+                                <label for="reserve-id">Unique ID</label>
+                                <input type="text" class="form-control" id="reserve-id"/>
                             </div>
                             <button type="submit" class="btn btn-primary submit">
                                 Submit
@@ -61,5 +61,44 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+    const submitButton = document.querySelector(".submit")
+    submitButton.addEventListener('click', (e)=>{
+        e.preventDefault();
+
+        //grab form elements
+        let customerName = document.querySelector("#reserve-name").value.trim();
+        let customerEmail = document.querySelector("#reserve-email").value.trim();
+        let customerPhone = document.querySelector("#reserve-phone").value.trim();
+        let customerId = document.querySelector("#reserve-id").value.trim();
+
+        const newReservation = {
+            customerEmail,
+            customerId,
+            customerName,
+            customerPhone
+        }
+      document.querySelector("#reserve-name").textContent = ""
+      document.querySelector("#reserve-email").textContent = ""
+     document.querySelector("#reserve-phone").textContent = ""
+        document.querySelector("#reserve-id").textContent = ""
+
+        //make the post call
+
+        fetch('/api/tables', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newReservation)
+        }).then((data)=>{
+            if(data){
+                alert('you are booked')
+            } else {
+                alert ('sorry you in the waiting list')
+            }
+        })
+    })
+    </script>
 </body>
 </html>
