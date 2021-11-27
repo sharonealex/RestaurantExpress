@@ -1,100 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <div class="jumbotron mt-5 p-5 bg-warning">
-            <h1 class="text-center"><span class="fa fa-fire">Restraunt Express</span></h1>
-            <hr>
-            <h2 class="text-center">Current Reservations and Waiting List
-                <br>
-                <br>
-                <div class="text-center">
-                    <a href="/"><button class="btn btn-success"><span class="fa fa-home"></span></button></a>
-                    <a href="/reserve"><button class="btn btn-danger"><span class="fa fa-credit-card">  Make Reservation</span></button></a>
-                </div>
-            </h2>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="card mt-4">
-                    <div class="card-header bg-primary">Current Reservations</div>
-                    <div class="card-body">
-                    <ul id="table-list"  class="list-group"></ul>
-                    </div>
-                </div>
-                <div class="card mt-4">
-                    <div class="card-header bg-secondary">Waiting list</div>
-                    <div class="card-body">
-                        <ul id="waiting-list" class="list-group"></ul>
-                    </div>
-                </div>
+      <div class="jumbotron mt-5 p-5 bg-warning">
+        <h1 class="text-center">
+          <span class="fa fa-fire">Restraunt Express</span>
+        </h1>
+        <hr />
+        <h2 class="text-center">
+          Current Reservations and Waiting List
+          <br />
+          <br />
+          <div class="text-center">
+            <a href="/"
+              ><button class="btn btn-success">
+                <span class="fa fa-home"></span></button
+            ></a>
+            <a href="/reserve"
+              ><button class="btn btn-danger">
+                <span class="fa fa-credit-card"> Make Reservation</span>
+              </button></a
+            >
+          </div>
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card mt-4">
+            <div class="card-header bg-primary">Current Reservations</div>
+            <div class="card-body">
+              <ul id="table-list" class="list-group"></ul>
             </div>
-        </div>
-        <div class="footer">
-            <div class="container">
-                <p><a href="/api/tables">API TABLES LINK</a> | <a href="/api/waitlist">API WAIT LIST</a></p>
+          </div>
+          <div class="card mt-4">
+            <div class="card-header bg-secondary">Waiting list</div>
+            <div class="card-body">
+              <ul id="waiting-list" class="list-group"></ul>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="footer">
+        <div class="container">
+          <p>
+            <a href="/api/tables">API TABLES LINK</a> |
+            <a href="/api/waitlist">API WAIT LIST</a>
+          </p>
+        </div>
+      </div>
     </div>
-</body>
-<script type="text/javascript">
-   
-    const runTableQuery = ()=>{
-        fetch('/api/tables', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then((response)=>{
-            return response.json();
-        }).then((tableData)=>{
-            const tableListEl = document.querySelector("#table-list") 
-            console.log("==============Table Data=======", tableData)
-            for(let i = 0; i < tableData.length; i++){
-                let listItem = document.createElement("li")
-                listItem.classList.add('list-group-item', 'mt-4')
-
-                let tableNumEl = document.createElement("h2")
-                tableNumEl.textContent = ` Table #${i + 1}`
-
-                let breakEl = document.createElement("hr")
-
-                let idEl = document.createElement("h2");
-                idEl.textContent = tableData[i]["customerId"]
-
-                let nameEl = document.createElement("h2")
-                nameEl.textContent = tableData[i]["customerName"]
-
-                let emailEl = document.createElement("h2")
-                emailEl.textContent = tableData[i]["customerEmail"]
-
-                let phoneEl = document.createElement("h2")
-                phoneEl.textContent = tableData[i]["customerPhone"]
-
-                listItem.appendChild(tableNumEl)
-                listItem.appendChild(breakEl);
-                listItem.appendChild(idEl);
-                listItem.appendChild(nameEl);
-                listItem.appendChild(emailEl);
-                listItem.appendChild(phoneEl)
-
-                tableListEl.appendChild(listItem)
-
-
-
-            }
-        }).catch((err)=>{
-            console.log(err)
+  </body>
+  <script type="text/javascript">
+    const runTableQuery = () => {
+      fetch("/api/tables", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          return response.json();
         })
-    }
+        .then((tableData) => {
+          const tableListEl = document.querySelector("#table-list");
+          console.log("==============Table Data=======", tableData);
+          for (let i = 0; i < tableData.length; i++) {
+            let listItem = document.createElement("li");
+            listItem.classList.add("list-group-item", "mt-4");
+
+            let tableNumEl = document.createElement("h2");
+            tableNumEl.textContent = ` Table #${i + 1}`;
+
+            let breakEl = document.createElement("hr");
+
+            let idEl = document.createElement("h2");
+            idEl.textContent = tableData[i]["customerId"];
+
+            let nameEl = document.createElement("h2");
+            nameEl.textContent = tableData[i]["customerName"];
+
+            let emailEl = document.createElement("h2");
+            emailEl.textContent = tableData[i]["customerEmail"];
+
+            let phoneEl = document.createElement("h2");
+            phoneEl.textContent = tableData[i]["customerPhone"];
+
+            listItem.appendChild(tableNumEl);
+            listItem.appendChild(breakEl);
+            listItem.appendChild(idEl);
+            listItem.appendChild(nameEl);
+            listItem.appendChild(emailEl);
+            listItem.appendChild(phoneEl);
+
+            tableListEl.appendChild(listItem);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    const runWaitListQuery = () => {
+      fetch("/api/reserve", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((resp) => {
+          return resp.json();
+        })
+        .then((waitData) => {
+          const waitListEl = document.querySelector("#waiting-list");
+          for (let i = 0; i < waitData.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.classList.add('list-group-item', 'mt-4');
+
+            const tableEl = document.createElement("h2");
+            tableEl.textContent = "Table #" + (i + 1);
+
+            const hrBreak = document.createElement("hr");
+
+            const idEl = document.createElement("h2");
+            idEl.textContent = `ID: ${waitData[i].customerId}`;
+
+            const nameEl = document.createElement('h2');
+            nameEl.textContent = `Name: ${waitData[i].customerName}`;
+
+            
+            const emailEl = document.createElement('h2');
+            emailEl.textContent = `Email: ${waitData[i].customerEmail}`;
+
+            const phoneEl = document.createElement('h2');
+            phoneEl.textContent = `Phone: ${waitData[i].customerPhone}`;
+
+                // Append all elements to the listItem
+            listItem.appendChild(tableEl);
+            listItem.appendChild(hrBreak);
+            listItem.appendChild(idEl);
+            listItem.appendChild(nameEl);
+            listItem.appendChild(emailEl);
+            listItem.appendChild(phoneEl);
+
+            waitListEl.appendChild(listItem);
+          }
+        }).catch((error) => {
+          console.log('Error:', error);
+        });
+    };
+
     runTableQuery();
-</script>
+    runWaitListQuery();
+  </script>
 </html>
