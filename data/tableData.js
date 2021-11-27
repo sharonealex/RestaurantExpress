@@ -4,6 +4,12 @@ const tableData = [
         customerEmail: "jane@gmail.com",
         customerPhone: 6788654455,
         customerId: 78
+       } ,
+       {
+        customerName : "Dean smith",
+        customerEmail: "jane@gmail.com",
+        customerPhone: 6788654455,
+        customerId: 78
        } 
 ];
 

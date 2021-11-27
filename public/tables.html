@@ -17,8 +17,8 @@
                 <br>
                 <br>
                 <div class="text-center">
-                    <a href="./tables.html"><button class="btn btn-success"><span class="fa fa-home"></span></button></a>
-                    <a href="./reserve.html"><button class="btn btn-danger"><span class="fa fa-credit-card">  Make Reservation</span></button></a>
+                    <a href="/"><button class="btn btn-success"><span class="fa fa-home"></span></button></a>
+                    <a href="/reserve"><button class="btn btn-danger"><span class="fa fa-credit-card">  Make Reservation</span></button></a>
                 </div>
             </h2>
         </div>
@@ -45,4 +45,56 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+   
+    const runTableQuery = ()=>{
+        fetch('/api/tables', {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response)=>{
+            return response.json();
+        }).then((tableData)=>{
+            const tableListEl = document.querySelector("#table-list") 
+            console.log("==============Table Data=======", tableData)
+            for(let i = 0; i < tableData.length; i++){
+                let listItem = document.createElement("li")
+                listItem.classList.add('list-group-item', 'mt-4')
+
+                let tableNumEl = document.createElement("h2")
+                tableNumEl.textContent = ` Table #${i + 1}`
+
+                let breakEl = document.createElement("hr")
+
+                let idEl = document.createElement("h2");
+                idEl.textContent = tableData[i]["customerId"]
+
+                let nameEl = document.createElement("h2")
+                nameEl.textContent = tableData[i]["customerName"]
+
+                let emailEl = document.createElement("h2")
+                emailEl.textContent = tableData[i]["customerEmail"]
+
+                let phoneEl = document.createElement("h2")
+                phoneEl.textContent = tableData[i]["customerPhone"]
+
+                listItem.appendChild(tableNumEl)
+                listItem.appendChild(breakEl);
+                listItem.appendChild(idEl);
+                listItem.appendChild(nameEl);
+                listItem.appendChild(emailEl);
+                listItem.appendChild(phoneEl)
+
+                tableListEl.appendChild(listItem)
+
+
+
+            }
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+    runTableQuery();
+</script>
 </html>
