@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron mt-5 p-5 bg-warning">
+            <h1 class="text-center"><span class="fa fa-fire">Restraunt Express</span></h1>
+            <hr>
+            <h2 class="text-center">Make your reservation
+                <br>
+                <br>
+                <div class="text-center">
+                    <a href="./tables.html"><button class="btn btn-success">View Tables</button></a>
+                    <a href="./reserve.html"><button class="btn btn-primary"><span class="fa fa-home"></span></button></a>
+                </div>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Table Reservation
+                    </div>
+                    <div class="card-body">
+                        <form action="#" class="form">
+                            <div class="form-group">
+                                <label for="reserve-name">Name</label>
+                                <input type="text" id="reserve-name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="reserve-phone">Phone</label>
+                                <input type="text" id="reserve-phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="reserve-email">Email</label>
+                                <input type="text" id="reserve-email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="reserve-unique-id">Unique ID</label>
+                                <input type="text" class="form-control" id="reserve-unique-id"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+        <div class="footer">
+            <div class="container">
+                <p><a href="/api/tables">API TABLES LINK</a> | <a href="/api/waitlist">API WAIT LIST</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
